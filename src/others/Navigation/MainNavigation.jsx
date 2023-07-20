@@ -1,22 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
 import "./MainNavigation.css";
 import MainHeader from "./MainHeader";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
+import BackDrop from "../UIElements/BackDrop";
+import SideBarNavLinks from '../Navigation/SideBarNavLinks';
 
 function MainNavigation() {
+
+    const [drawerIsOpen, setDrawerIsOpen] = useState(true);
+
+
     return (
         //? everything inside the MainHeader will be forwarded to MainHeader as children for the props.
         <React.Fragment>
-            <SideDrawer>
+            {drawerIsOpen && <BackDrop onClick={()=>{setDrawerIsOpen(false)}}/>}
+            {drawerIsOpen && <SideDrawer>
                 <nav className="main-navigation__drawer-nav">
-                    <NavLinks />
+                    <SideBarNavLinks />
                 </nav>
-            </SideDrawer>
+            </SideDrawer>}
             <MainHeader>
-                <button className="main-navigation__menu-btn">
+                {/* menu button - hamburger button */}
+                <button className="main-navigation__menu-btn" onClick={()=>{setDrawerIsOpen(true)}}>
                     <span></span>
                     <span></span>
                     <span></span>
