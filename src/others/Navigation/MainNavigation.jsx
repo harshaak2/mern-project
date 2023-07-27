@@ -35,7 +35,7 @@ function MainNavigation() {
 
                 <nav className="main-navigation__header-nav">
                     {/* Links */}
-                    <NavLinks></NavLinks>
+                   {!drawerIsOpen?<NavLinks></NavLinks>:<></>} 
                 </nav>
             </MainHeader>
         </React.Fragment>
